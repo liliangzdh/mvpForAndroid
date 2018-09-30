@@ -44,4 +44,7 @@ dependencies {
 
     /* 底部菜单 */
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
+
+    /**日志*/
+    implementation 'com.orhanobut:logger:2.2.0'
 }

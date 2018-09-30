@@ -14,7 +14,7 @@ import com.ydniu.mvpbase.bean.TabEntity;
 import com.ydniu.mvpbase.ui.main.find.FindFragment;
 import com.ydniu.mvpbase.ui.main.home.HomeFragment;
 import com.ydniu.mvpbase.ui.main.userCenter.UserCenterFragment;
-import com.ydniu.mvpbase.ui.main.utils.LogUtils;
+import com.ydniu.mvpbase.utils.LogUtils;
 
 import java.util.ArrayList;
 
@@ -100,7 +100,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         // Fragment事务管理器
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         hideFragments(transaction);
-        LogUtils.d("current position tab" + position);
+        LogUtils.e("current position tab" + position);
         switch (position) {
             case 0: //首页
                 if (mHomeFragment == null) {
