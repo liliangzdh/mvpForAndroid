@@ -12,11 +12,11 @@ public interface HomeContract {
     interface HomeView extends IView {
         String getName();
         String getPassword();
-
-
         void clearUserName();
 
         void clearEditTextPassWord();
+
+        void setData(String text);
 
     }
 }

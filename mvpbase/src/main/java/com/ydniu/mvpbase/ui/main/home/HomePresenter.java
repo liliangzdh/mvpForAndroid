@@ -4,17 +4,12 @@ import android.text.TextUtils;
 
 import com.ydniu.mvpbase.interf.GetRequest_Interface;
 import com.ydniu.mvpbase.mvpbase.BasePresenter;
+import com.ydniu.mvpbase.rx.RxSchedulersUtils;
+import com.ydniu.mvpbase.rx.RxSubscriber;
 import com.ydniu.mvpbase.utils.LogUtils;
 
 import java.io.IOException;
 
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
-import io.reactivex.ObservableTransformer;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -111,37 +106,49 @@ public class HomePresenter extends BasePresenter<HomeContract.HomeModal, HomeCon
 //                });
 
         //更简单的方式，compose
+//        getRequest_interface.getCallData()
+//                .compose(new ObservableTransformer<ResponseBody, ResponseBody>() {
+//                    @Override
+//                    public ObservableSource<ResponseBody> apply(Observable<ResponseBody> observable) {
+//                        return observable.subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+//                    }
+//                })
+//                .subscribe(new RxSubscriber<ResponseBody>() {
+//                    @Override
+//                    public void _onNext(ResponseBody responseBody) {
+//                        try {
+//                            LogUtils.d(responseBody.string());
+//                        } catch (IOException e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void _onError(String msg, boolean isNetError) {
+//                        getView().showToast(msg);
+//                    }
+//                });
+
+
+        getView().showOrHideLoading(true);
         getRequest_interface.getCallData()
-                .compose(new ObservableTransformer<ResponseBody, ResponseBody>() {
+                .compose(RxSchedulersUtils.<ResponseBody>applySchedulers(getLifecycleProvider()))
+                .subscribe(new RxSubscriber<ResponseBody>() {
                     @Override
-                    public ObservableSource<ResponseBody> apply(Observable<ResponseBody> observable) {
-                        return observable.subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
-                    }
-                })
-                .subscribe(new Observer<ResponseBody>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(ResponseBody responseBody) {
-
+                    public void _onNext(ResponseBody responseBody) {
                         try {
-                            LogUtils.d(responseBody.string());
+                            String string = responseBody.string();
+                            LogUtils.d(string);
+                            getView().setData(string);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                        getView().showOrHideLoading(false);
                     }
 
                     @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
+                    public void _onError(String msg, boolean isNetError) {
+                        getView().showOrHideLoading(false);
                     }
                 });
     }

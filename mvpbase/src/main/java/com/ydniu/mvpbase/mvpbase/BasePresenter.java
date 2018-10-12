@@ -38,6 +38,7 @@ public abstract class BasePresenter<M extends IModal,V extends IView> implements
 
     @Override
     public void detachView() {
+        unDispose();
         this.view = null;
     }
 

@@ -5,9 +5,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.ydniu.mvpbase.R;
 import com.ydniu.mvpbase.base.BaseFragment;
+import com.ydniu.mvpbase.event.TestEvent;
+import com.ydniu.mvpbase.rx.RxBus;
 import com.ydniu.mvpbase.ui.TextAct;
 
 import butterknife.BindView;
@@ -29,6 +32,9 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @BindView(R.id.pb_load)
     ProgressBar progressBar;
 
+    @BindView(R.id.tvContent)
+    TextView tvContent;
+
     @Override
     public int getLayoutResId() {
         return R.layout.fragment_home;
@@ -44,7 +50,7 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
 
     }
 
-    @OnClick({R.id.bt_clear, R.id.bt_login,R.id.bt_go})
+    @OnClick({R.id.bt_clear, R.id.bt_login, R.id.bt_go, R.id.bt_bus})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.bt_clear:
@@ -55,6 +61,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
                 break;
             case R.id.bt_go:
                 startActivity(new Intent(getContext(), TextAct.class));
+                break;
+            case R.id.bt_bus:
+
+                RxBus.getDefault().post(new TestEvent(2, "hello world"));
                 break;
         }
     }
@@ -87,5 +97,10 @@ public class HomeFragment extends BaseFragment<HomePresenter> implements HomeCon
     @Override
     public void clearEditTextPassWord() {
         et_password.setText("");
+    }
+
+    @Override
+    public void setData(String text) {
+        tvContent.setText(text);
     }
 }

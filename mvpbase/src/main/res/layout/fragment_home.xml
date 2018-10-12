@@ -76,17 +76,35 @@
         android:gravity="center">
 
         <ProgressBar
-            android:visibility="gone"
             android:id="@+id/pb_load"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/bt_go"
-        android:text="调整到其他页面"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/bt_go"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="跳转到其他页面" />
+
+        <Button
+            android:id="@+id/bt_bus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RxBus发送事件" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvContent"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />w
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
