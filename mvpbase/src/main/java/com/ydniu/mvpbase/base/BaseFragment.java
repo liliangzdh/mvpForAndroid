@@ -5,22 +5,22 @@ import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.ydniu.mvpbase.mvpbase.BasePresenter;
 import com.ydniu.mvpbase.mvpbase.IView;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements IView {
+public abstract class BaseFragment<T extends BasePresenter> extends RxFragment implements IView {
 
 
-    private T presenter;
+    protected T presenter;
 
     /**
      * 缓存Fragment view

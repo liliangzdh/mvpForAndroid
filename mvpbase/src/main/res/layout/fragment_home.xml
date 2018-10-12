@@ -1,12 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv"
-        android:layout_width="wrap_content"
-        android:textColor="#ff0000"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="userName:" />
+
+
+        <EditText
+            android:id="@+id/et_useName"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="password:" />
+
+
+        <EditText
+            android:id="@+id/et_password"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id="@+id/bt_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="login" />
+
+
+        <Button
+            android:id="@+id/bt_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="clear" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="home" />
+        android:gravity="center">
+
+        <ProgressBar
+            android:visibility="gone"
+            android:id="@+id/pb_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/bt_go"
+        android:text="调整到其他页面"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />w
+
 </LinearLayout>

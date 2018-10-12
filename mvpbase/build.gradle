@@ -32,19 +32,33 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-    //rx android
+    /**rx android */
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    //rxjava
+    /** rxjava */
     implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
 
-    //butterknife
+     /**Rx生命周期管理*/
+    implementation 'com.trello.rxlifecycle2:rxlifecycle:2.2.2'
+    implementation 'com.trello.rxlifecycle2:rxlifecycle-components:2.2.2'
+
+    /** butterknife */
     implementation 'com.jakewharton:butterknife:8.8.1'
-    // android stuio 3.0 插件不支持了。只能这样才能支持
+    /** androidStuio 3.0 插件不支持了。只能这样才能支持**/
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
-    /* 底部菜单 */
+    /** 底部菜单 */
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 
     /**日志*/
     implementation 'com.orhanobut:logger:2.2.0'
+
+    /**网络请求框架**/
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+
+
+
 }

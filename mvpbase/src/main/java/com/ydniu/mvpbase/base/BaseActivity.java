@@ -6,14 +6,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.ydniu.mvpbase.ui.views.LoadingProgressDialog;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity extends RxAppCompatActivity {
 
 
     private Unbinder bind;
@@ -44,8 +44,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public abstract @LayoutRes
-    int getLayoutResId();
+    public abstract @LayoutRes int getLayoutResId();
 
 
     public abstract void getIntentData(Intent intent);

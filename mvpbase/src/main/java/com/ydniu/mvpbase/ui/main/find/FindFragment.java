@@ -14,6 +14,7 @@ public class FindFragment extends BaseFragment<FindPresenter> implements FindCon
     @Override
     protected void initData() {
 
+
     }
 
     @Override
