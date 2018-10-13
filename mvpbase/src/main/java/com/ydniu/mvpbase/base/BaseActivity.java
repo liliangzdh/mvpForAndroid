@@ -5,10 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.LayoutRes;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 import com.ydniu.mvpbase.ui.views.LoadingProgressDialog;
+import com.ydniu.mvpbase.utils.MPermissionUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -70,6 +72,13 @@ public abstract class BaseActivity extends RxAppCompatActivity {
         } else {
             loadingDialog.dismiss();
         }
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        MPermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
 

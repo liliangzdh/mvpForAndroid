@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.ydniu.mvpbase.mvpbase.BasePresenter;
 import com.ydniu.mvpbase.mvpbase.IView;
+import com.ydniu.mvpbase.utils.MPermissionUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -104,4 +105,11 @@ public abstract class BaseFragment<T extends BasePresenter> extends RxFragment i
     }
 
     public abstract T createPresenter();
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        MPermissionUtils.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

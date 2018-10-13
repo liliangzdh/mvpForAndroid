@@ -8,9 +8,8 @@ import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
 /**
- * @author xuhao
- * @desc
- * @date 2017/12/12 下午5:56.
+ *
+ *
  */
 
 public class LogUtils {
